@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <main class="px-3">
+        <h1>ToDo list app</h1>
+
+    </main>
+
+    <main class="mt-5 mb-3">
+        <form method="post">
+            <div class="row">
+                <div class="col-11">
+                    <input type="text" id="name" name="name" class="form-control my-input"
+                        placeholder="Write your task...">
+                </div>
+                <div class="col-1">
+                    <button type="submit" class="my-btn">
+                        <img src="static/images/mas.png">
+                    </button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <main class="mt-5">
+        <h5>Tasks - {{response.counter2}}</h5>
+        {% for task in response.incompleted %}
+        <div class="card text-white my-color mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2">
+                        <!-- <input type="checkbox" name="" id=""> -->
+                        <a href="update/{{task['id']}}">
+                            <img src="static/images/task.png">
+                        </a>
+                    </div>
+                    <div class="col-8 text-start">
+                        <span class="card-title">{{task['name']}}</span>
+                    </div>
+                    <div class="col-2">
+                        <a href="delete/{{task['id']}}">
+                            <img src="static/images/delete.png">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+
+    <main class="mt-5">
+        <h5>Completed - {{response.counter1}}</h5>
+        {% for task in response.completed %}
+        <div class="card text-white my-color mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-2">
+                        <!-- <input type="checkbox" name="" id=""> -->
+                        <a href="/">
+                            <img src="static/images/completed.png">
+                        </a>
+                    </div>
+                    <div class="col-10 text-start">
+                        <span class="card-title">{{task['name']}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+
+</div>
+{% endblock %}
