@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <main class="px-3">
+        <h1>ToDo list app</h1>
+
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">{{message}}</div>
+        {% endfor %}
+    </main>
+
+    <main class="mt-5 mb-3">
+        <form method="post" action="/login">
+            <input type="email" name="email" id="email" placeholder="Ingresa tu email">
+            <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña">
+            <button type="submit">Inicia sesión</button>
+        </form>
+    </main>
+</div>
+{% endblock %}
