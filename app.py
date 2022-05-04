@@ -1,3 +1,4 @@
+import os
 from flask import Flask, redirect, render_template, request, flash, url_for
 import requests
 import firebase_admin
@@ -126,5 +127,6 @@ def delete(id):
     except:
         return render_template('error.html', response='response')
 
+PORT = int(os.environ.get("PORT",8080))
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(threaded=True, host='0.0.0.0', port=PORT)
